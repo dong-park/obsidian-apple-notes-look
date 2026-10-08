@@ -1,0 +1,64 @@
+/* Apple Notes(macOS) 외관 흉내 — 라이트/다크 공통 */
+
+body {
+  --font-text-theme: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+  --font-interface-theme: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Apple SD Gothic Neo", sans-serif;
+  --notes-yellow: #e2a400;
+  --line-height-normal: 1.4;
+  --p-spacing: 0.15em;
+  --list-indent: 1.6em;
+  --list-spacing: 0.05em;
+  --inline-title-size: 28px;
+  --inline-title-weight: 700;
+  --h1-size: 28px; --h1-weight: 700;
+  --h2-size: 21px; --h2-weight: 700;
+  --h3-size: 17px; --h3-weight: 700;
+  --h4-size: 15px; --h4-weight: 600;
+  --heading-spacing: 0.9em;
+  --checkbox-radius: 50%;
+  --checkbox-color: var(--notes-yellow);
+  --checkbox-color-hover: var(--notes-yellow);
+  --checkbox-marker-color: #fff;
+  --tag-background: transparent;
+  --tag-background-hover: transparent;
+  --tag-color: var(--notes-yellow);
+  --tag-padding-x: 0;
+}
+.theme-light {
+  --background-primary: #ffffff;
+  --background-secondary: #f2f1f0;
+  --nav-item-background-active: #dddcdb;
+  --nav-item-background-hover: #e7e6e5;
+}
+.theme-dark {
+  --background-primary: #1e1e1e;
+  --background-secondary: #262626;
+  --nav-item-background-active: #3a3a3a;
+}
+
+/* 본문: 링크·태그 노란색, 체크한 항목은 회색 처리하지 않음 */
+.markdown-rendered a, .cm-s-obsidian .cm-hmd-internal-link,
+.markdown-rendered .internal-link { color: var(--notes-yellow); }
+.markdown-rendered .tag, .cm-s-obsidian span.cm-hashtag { background: none; border: none; }
+.markdown-rendered li[data-task="x"], .markdown-source-view .HyperMD-task-line[data-task="x"] {
+  text-decoration: none; color: var(--text-normal);
+}
+input[type="checkbox"] { width: 18px; height: 18px; border: 1.5px solid var(--text-faint); }
+
+/* 사이드바: 둥근 회색 선택 박스 + 노란 폴더 아이콘 */
+.nav-folder-title, .nav-file-title { border-radius: 7px; padding-top: 5px; padding-bottom: 5px; }
+.nav-folder-title-content::before {
+  content: ""; display: inline-block; width: 15px; height: 12px; margin-right: 7px;
+  vertical-align: -1px; background: var(--notes-yellow);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 16'%3E%3Cpath d='M2 1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z' fill='none' stroke='black' stroke-width='1.6'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+.nav-folder-collapse-indicator { color: var(--text-faint); }
+
+/* 메모 앱처럼 잡동사니 숨김 */
+.status-bar, .view-header-breadcrumb, .tab-header-container .tab-header-new-tab { display: none; }
+.workspace-leaf-content[data-type="markdown"] .view-header { border-bottom: none; }
+
+/* 세부 맞춤 */
+body { --list-marker-color: var(--text-normal); --nav-indentation-guide-color: transparent; }
+.metadata-container, .inline-title, .view-header-title-container { display: none !important; }
+.workspace-split.mod-left-split .workspace-leaf-content { background: var(--background-secondary); }
